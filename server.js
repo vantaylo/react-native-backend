@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== 'production') { 
 require('dotenv').config() }
 const express = require("express");
-const PORT = process.env.PORT || 3001;
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -18,9 +17,7 @@ app.use(bodyParser.json());
 
 app.use('/', itemsRouter);
 
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-});
+app.listen(process.env.PORT || 3000);
 
 app.use((err, req, res, next) => {
 	res.status(500).json({
