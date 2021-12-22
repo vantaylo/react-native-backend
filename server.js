@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use('/', itemsRouter);
 
 app.use((err, req, res, next) => {
+	console.info(err);
 	res.status(500).json({
 		message: "Something went wrong",
 	});
