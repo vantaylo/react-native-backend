@@ -23,7 +23,7 @@ app.use('/', itemsRouter);
 
 app.listen(process.env.PORT || 3000);
 
-app.use((req, res, next) => {
+app.use(function(req, res, next) {
 	next(createError(404));
 });
 
