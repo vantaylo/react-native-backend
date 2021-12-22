@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 
 app.use(helmet());
 
+app.get('/ping', function(req, res) {
+	return res.send('pong');
+});
+
 app.use('/', itemsRouter);
 
 app.listen(process.env.PORT || 3000);
