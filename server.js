@@ -23,12 +23,12 @@ app.use(cookieParser());
 
 app.use('/', itemsRouter);
 
-app.listen(process.env.PORT || 3000);
-
 app.use((err, req, res, next) => {
 	res.status(500).json({
 		message: "Something went wrong",
 	});
 });
+
+app.listen(process.env.PORT || 3000);
 
 module.exports = app
