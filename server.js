@@ -1,19 +1,23 @@
 if (process.env.NODE_ENV !== 'production') { 
 require('dotenv').config() }
 const express = require("express");
-const app = express();
+const helmet = require("helmet");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const itemsRouter = require("./routes/items-router");
 
-app.use(express.json());
+const app = express();
 
 app.use(cors());
+
+app.use(express.json());
 
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
+
+app.use(helmet());
 
 app.use('/', itemsRouter);
 
