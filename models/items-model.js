@@ -1,6 +1,6 @@
 const db = require("../knex/knex")
 
-function findall() {
+function findAll() {
 	return db('items')
 }
 
@@ -27,7 +27,7 @@ const remove = (id) => {
 }
 
 module.exports = {
-	findall,
+	findAll,
     findById,
     add,
     update,

@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/items", async (req, res, next) => {
 	try {
-		const items = await Items.findall()
+		const items = await Items.findAll()
 		return res.json(items)
 	} catch (err) {
 		next(err)
@@ -14,7 +14,7 @@ router.get("/items", async (req, res, next) => {
 
 router.get("/:item_id", async (req, res, next) => {
 	try {
-		const item = await Items.find(req.params.id)
+		const item = await Items.findById(req.params.id)
 		return res.status(200).json(item)
 	} catch (err) {
 		next(err)
