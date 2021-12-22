@@ -1,7 +1,6 @@
 # react-native-backend
 
 API reference
-Deployed on Heroku: https://react-native-backend-vw.herokuapp.com/
 
 Items
 Endpoints	| Method |	Body	| Description
