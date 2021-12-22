@@ -3,6 +3,7 @@ require('dotenv').config() }
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const itemsRouter = require("./routes/items-router");
 
@@ -18,25 +19,16 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use(helmet());
-
-app.get('/ping', function(req, res) {
-	return res.send('pong');
-});
+app.use(cookieParser());
 
 app.use('/', itemsRouter);
 
 app.listen(process.env.PORT || 3000);
 
-app.use(function(req, res, next) {
-	next(createError(404));
-});
-
-app.use(function(err, req, res, next) {
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
-
-	res.status(err.status || 500);
-	next(err);
+app.use((err, req, res, next) => {
+	res.status(500).json({
+		message: "Something went wrong",
+	});
 });
 
 module.exports = app
