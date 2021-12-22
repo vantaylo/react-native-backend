@@ -19,7 +19,7 @@ module.exports = {
 
   production: {
 		client: "pg",
-		connection: process.env.DATABASE,
+		connection: process.env.DB_URL,
 		migrations: {
 			directory: "./knex/migrations",
 		},
